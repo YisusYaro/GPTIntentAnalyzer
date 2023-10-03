@@ -5,9 +5,11 @@ import { setSentencesModule } from '../../../sentences/infrastructure/dependency
 export class App {
   private static instance: App;
   private container: Container;
+  private settedModules: string[];
 
   private constructor() {
     this.container = new Container();
+    this.settedModules = [];
   }
 
   public static getInstance(): App {
@@ -25,5 +27,17 @@ export class App {
   public setDependencyInjectionApp() {
     setSharedModule(this.container);
     setSentencesModule(this.container);
+  }
+
+  public setSharedModule() {
+    if (this.settedModules.includes(setSharedModule.name)) return;
+    setSharedModule(this.container);
+    this.settedModules.push(setSharedModule.name);
+  }
+
+  public setSentencesModule() {
+    if (this.settedModules.includes(setSentencesModule.name)) return;
+    setSentencesModule(this.container);
+    this.settedModules.push(setSentencesModule.name);
   }
 }
