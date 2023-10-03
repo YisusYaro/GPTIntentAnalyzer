@@ -10,7 +10,8 @@
     "start:prod": "node dist/src/index.js",
     "lint": "eslint --config=.eslintrc.js .",
     "lint:fix": "eslint --config=.eslintrc.js . --fix",
-    "test": "jest --verbose --runInBand --forceExit"
+    "test": "jest --verbose --runInBand --forceExit",
+    "test:sentences": "jest ./test/sentences --verbose --runInBand --forceExit"
   },
   "author": "Jesus Alejandro Yahuitl Rodriguez",
   "license": "ISC",
