@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "typescript-ddd-example",
+  "description": "GPTIntentAnalyzer",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
@@ -39,6 +39,7 @@
     "express": "^4.17.3",
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
+    "openai": "^4.11.1",
     "reflect-metadata": "^0.1.13",
     "ulid": "^2.3.0",
     "winston": "^3.7.2"
