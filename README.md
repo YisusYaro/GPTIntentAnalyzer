@@ -1,6 +1,4 @@
-# typescript-ddd-example
-
-Typescript example using driven domain design and cqrs.
+# GPTIntentAnalyzer
 
 ## Dev enviroment using node 📦
 
