@@ -2,10 +2,11 @@ import { injectable, Container } from 'inversify';
 import { Command } from '../../application/command';
 import { CommandHandler } from '../../application/commands/command.handler';
 import { App } from '../dependency-injection/app';
+import { Result } from '../../application/result';
 
 export interface CommandHandlersInformation {
   getCommandHandlersMap(): Map<Command, symbol>;
-  search(command: Command): CommandHandler<Command>;
+  search(command: Command): CommandHandler<Command, Result | undefined>;
 }
 
 @injectable()
@@ -24,11 +25,12 @@ export class CommandHandlersInformationImpl
     return this.commandHandlersMap;
   }
 
-  public search(command: Command): CommandHandler<Command> {
+  public search(command: Command): CommandHandler<Command, Result | undefined> {
     const handler = this.commandHandlersMap.get(command.constructor);
     if (!handler)
       throw new Error(`Command not registered ${command.constructor}`);
-    const commandHandler = this.container.get<CommandHandler<Command>>(handler);
+    const commandHandler =
+      this.container.get<CommandHandler<Command, Result | undefined>>(handler);
     return commandHandler;
   }
 }
