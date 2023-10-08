@@ -30,12 +30,10 @@ describe('Create sentence', () => {
 
   describe('execute', () => {
     it('should return successful http status', async () => {
-      const result = await request(app)
-        .post(`/sentences`)
-        .send({
-            id: '01HBVJJFMPT5GG7071ED3ANJFC',
-            text: 'Deseo tener más información de su producto',
-          });
+      const result = await request(app).post(`/sentences`).send({
+        id: '01HBVJJFMPT5GG7071ED3ANJFC',
+        text: 'Deseo tener más información de su producto',
+      });
 
       expect(result.status).toBe(201);
     }, 10000);
