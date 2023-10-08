@@ -14,8 +14,12 @@ export class SentenceAnalyzerImpl implements SentenceAnalyzer {
     const chatCompletion = await this.openai.chat.completions.create({
       messages: [
         {
+          role: 'system',
+          content: `Determine the intention using this list: - buy - complain - doubt If the provided message cannot be tagged with the previous list use: - general`,
+        },
+        {
           role: 'user',
-          content: `Please determine the intention behind the following sentence: ${text}`,
+          content: `${text}`,
         },
       ],
       model: 'gpt-3.5-turbo',
